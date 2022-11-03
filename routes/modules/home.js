@@ -7,7 +7,10 @@ router.get('/', (req, res) => {
     .lean()
     .sort({ _id: 'asc' })
     .then(restaurants => res.render('index', { restaurants }))
-    .catch(error => console.log(error))
+    .catch(err => {
+      console.log(err)
+      res.render('error', { errorMsg: err.message })
+    })
 })
 
 router.get('/search', (req, res) => {
@@ -17,6 +20,10 @@ router.get('/search', (req, res) => {
     .then(restaurants => {
       const restaurantsData = restaurants.filter(item => item.name.toLowerCase().includes(keyword.toLowerCase()) || item.category.includes(keyword))
       res.render('index', { restaurants: restaurantsData, keyword: keyword })
+    })
+    .catch(err => {
+      console.log(err)
+      res.render('error', { errorMsg: err.message })
     })
 })
 
