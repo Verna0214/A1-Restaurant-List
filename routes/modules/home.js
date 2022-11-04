@@ -15,8 +15,9 @@ router.get('/', (req, res) => {
 })
 
 router.get('/search', (req, res) => {
+  const userId = req.user._id
   const keyword = req.query.keyword
-  Restaurant.find()
+  return Restaurant.find({ userId })
     .lean()
     .then(restaurants => {
       const restaurantsData = restaurants.filter(item => item.name.toLowerCase().includes(keyword.toLowerCase()) || item.category.includes(keyword))
