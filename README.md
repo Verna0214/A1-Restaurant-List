@@ -30,7 +30,7 @@ What user need to do first
 ### Installing
 1. Copy and download file HTTPS
 ```
-$ git clone https://github.com/Verna0214/A1-Restaurant List.git
+$ git clone https://github.com/Verna0214/A1-Restaurant-List.git
 ```
 
 2. Enter project file
